@@ -11,7 +11,7 @@
 - Compile the files `make`.
 - Run all tests `make all_tests`.
 - Run `make run TEST="Test Name"` , replace `Test Name` with file name.
-- If adding new or updating the mem files, please change the time before `$finish` in [testrunner.sv](/src/testrunner.sv)
+- If adding new or updating the mem files, please change the time before `$finish` in [testrunner.sv](/Control-Flow/src/testrunner.sv)
 # Package Used
 
 Verilator 5.050 2026-07-01 rev vUNKNOWN-built20260730

@@ -1,0 +1,5 @@
+//Invalid commands in idle should remain idle
+99000000
+88000000
+77000000
+010AAAAA

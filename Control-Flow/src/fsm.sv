@@ -1,29 +1,59 @@
+`timescale 1ns/1ps
+
+typedef struct packed {
+    logic [31:24] opcode;
+    logic [23:0] data;
+} register;
+
+typedef enum logic [1:0] {
+    IDLE  = 2'b00,
+    CHECK = 2'b01,
+    ERROR = 2'b10
+} status;
+
 module fsm(
     input wire clk,
     input wire reset,
-    output reg [1:0] state,
-    input reg [32:0] val,
-    reg [23:0] label
-    );
+    input register a,
+    output status state
+);
 
-    parameter IDLE = 2'b00;
-    parameter CHECK = 2'b01;
-    parameter ERROR = 2'b10;
+    logic [23:0] label;
 
-    reg [1,0] nextstate;
-    
-    @always @(posedge clk) begin
-    if(reset)
-        state <=IDLE;
-    else
-        state <=nextstate;
-    end 
+    always_ff @(posedge clk) begin
+        if (reset) begin
+            state <= IDLE;
+            label <= '0;
+        end
+        else begin
+            case (state)
+                IDLE: begin
+                    if (a.opcode == 8'h01)
+                        label <= a.data;
+                    else if(a.opcode == 8'h02)
+                        state <= CHECK;
+                end
+                CHECK: begin
+                    if (a.opcode== 8'h03)
+                        if (a.data == label)
+                            state <= IDLE;
+                        else 
+                            state <= ERROR;
+                    else
+                        state <= ERROR;
+                end
 
-    always @(*) begin
-        case (state)
-                        
-            default : IDLE;
-        endcase
+                ERROR: begin
+                    state <= ERROR;
+                end
+                 //Added due to Wall flag basically if no correct value exsist
+                 //it will set value to idle
+                default: begin 
+                    state <=IDLE;
+                    label <= '0;
+                end
+            endcase
+        end
     end
 
-    
+endmodule

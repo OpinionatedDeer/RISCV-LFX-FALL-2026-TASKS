@@ -1,0 +1,7 @@
+//Should not leave error
+01123456 //SET label = 0x123456
+02000000 //JUMP
+03999999 //LPAD 0x999999 result in error
+010AAAAA 
+02000000
+03AAAAAA

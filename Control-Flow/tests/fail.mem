@@ -1,0 +1,4 @@
+//Should ERROR since not matching
+01123456 //Set label = 0x123456
+02000000 //JUMP
+03ABCDEF //LPAD 0xABCDEF

@@ -32,6 +32,8 @@ module fsm(
                         label <= a.data;
                     else if(a.opcode == 8'h02)
                         state <= CHECK;
+                    else
+                        state <= IDLE; //Just being explicit here
                 end
                 CHECK: begin
                     if (a.opcode== 8'h03)

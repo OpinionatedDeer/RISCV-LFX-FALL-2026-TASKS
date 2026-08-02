@@ -5,7 +5,7 @@ BUILD = obj_dir
 TEST ?= pass
 
 all:
-	verilator --binary -j 0 -Wall \
+	verilator --binary -j 0 -Wall -Wpedantic \
 		--top-module $(TOP) \
 		-GMEMFILE=\"tests/$(TEST).mem\" \
 		$(SRC)

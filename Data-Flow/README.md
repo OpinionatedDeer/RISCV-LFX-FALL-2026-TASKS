@@ -2,7 +2,7 @@
 
 # Assumptions
 
-- [Core Assumptions and Research Before Code]("LLVM assumption and basic research.pdf")
+- [Core Assumptions and Research Before Code](LLVM%20assumption%20and%20basic%20research.pdf)
 - Sources used to learn LLVM [Sources](Sources.md)
 
 # How to run

@@ -2,7 +2,6 @@
 
 # Assumptions
 
-- I built this fsm according to idea i had after reading the Coding Challenge/
 - [Core Idea](2026-07-30-12-49-27-834.jpg)
 - Sources used to learn SystemVerilog [Sources](Sources.md)
 
